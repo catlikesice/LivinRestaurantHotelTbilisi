@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="site-header" role="banner">
-    <div class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar" role="navigation" aria-label="Main navigation">
       <a class="brand" href="./" aria-label="Livin Hotel home">
         <span class="site-logo" aria-hidden="true">
           <!-- Replace logo.png with your provided logo file -->
@@ -22,7 +22,13 @@
         </div>
       </a>
 
-      <nav class="nav-actions" role="menubar" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="primary-nav" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav-actions" id="primary-nav" role="menubar" aria-label="Primary" data-visible="true">
         <!-- These are the requested containers with the exact words -->
         <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
         <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
@@ -79,5 +85,47 @@
       <p class="muted">© <strong>Livin Hotel</strong> • Tbilisi</p>
     </div>
   </footer>
+
+    <script>
+      (function() {
+        const toggle = document.querySelector('.nav-toggle');
+        const nav = document.getElementById('primary-nav');
+        if (!toggle || !nav) {
+          return;
+        }
+
+        const mq = window.matchMedia('(max-width: 700px)');
+
+        const syncState = (event) => {
+          if (!mq.matches) {
+            nav.dataset.visible = 'true';
+            toggle.setAttribute('aria-expanded', 'true');
+          } else {
+            if (event && event.matches) {
+              toggle.setAttribute('aria-expanded', 'false');
+            }
+            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+            nav.dataset.visible = isExpanded ? 'true' : 'false';
+          }
+        };
+
+        toggle.addEventListener('click', () => {
+          if (!mq.matches) {
+            return;
+          }
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          const nextState = (!expanded).toString();
+          toggle.setAttribute('aria-expanded', nextState);
+          nav.dataset.visible = nextState;
+        });
+
+        if (typeof mq.addEventListener === 'function') {
+          mq.addEventListener('change', syncState);
+        } else if (typeof mq.addListener === 'function') {
+          mq.addListener(syncState);
+        }
+        syncState();
+      })();
+    </script>
 </body>
 </html>

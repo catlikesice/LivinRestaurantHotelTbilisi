@@ -5,55 +5,79 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Livin Hotel — Tbilisi</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Optional: better fonts for headings & body -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
+  <header class="site-header" role="banner">
     <div class="navbar" role="navigation" aria-label="Main navigation">
-      <div class="brand">
-        <a href="./" aria-label="Livin Hotel home" style="display:inline-flex;align-items:center;text-decoration:none">
-          <span class="site-logo" aria-hidden="true">
-            <!-- Replace logo.png with your provided logo file -->
-            <img src="logo.png" alt="Livin Hotel logo" />
-          </span>
-        </a>
-        <div>
+      <a class="brand" href="./" aria-label="Livin Hotel home">
+        <span class="site-logo" aria-hidden="true">
+          <!-- Replace logo.png with your provided logo file -->
+          <img src="logo.png" alt="Livin Hotel logo">
+        </span>
+        <div class="brand-text">
           <span class="site-title">Livin Hotel</span>
           <span class="site-sub">Tbilisi • Comfort & Hospitality</span>
         </div>
-      </div>
+      </a>
 
-      <div class="nav-actions" role="menubar" aria-label="Primary">
+      <nav class="nav-actions" role="menubar" aria-label="Primary">
         <!-- These are the requested containers with the exact words -->
         <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
         <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
         <a class="nav-card restaurant" href="#restaurant" role="menuitem">Restaurant</a>
-      </div>
+      </nav>
     </div>
   </header>
 
-  <main>
+  <main class="site-main">
     <section class="hero" aria-labelledby="welcome-title">
-      <div>
-        <h2 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h2>
-        <p>Experience warm hospitality with a modern, tranquil design inspired by our emblem.</p>
+      <div class="hero-content">
+        <h1 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h1>
+        <p class="lead">Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.</p>
+        <p class="hero-actions">
+          <a class="cta primary" href="#book">Check Availability</a>
+          <a class="cta ghost" href="#tbilisi">Explore Tbilisi</a>
+        </p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <!-- Decorative circular motif that echoes the logo -->
+        <div class="logo-circle">
+          <img src="logo.png" alt="" />
+        </div>
       </div>
     </section>
 
-    <!-- Placeholder sections that the navbar links can target -->
-    <section id="book" style="margin-top:28px">
-      <h3 style="color:var(--accent-red)">Book a Room</h3>
-      <p style="color:var(--muted)">Booking form and availability calendar go here.</p>
+    <section id="book" class="section-cards">
+      <article class="section-card">
+        <h2>Book a Room</h2>
+        <p>Quickly check availability, choose your dates and room type — secure your stay in seconds.</p>
+        <a class="card-link" href="#book">Start booking →</a>
+      </article>
+
+      <article id="tbilisi" class="section-card">
+        <h2>About Tbilisi</h2>
+        <p>Discover nearby attractions, transport options and tips to get the most of your visit to Georgia’s capital.</p>
+        <a class="card-link" href="#tbilisi">Learn more →</a>
+      </article>
+
+      <article id="restaurant" class="section-card">
+        <h2>Restaurant</h2>
+        <p>Local flavors and seasonal menus — enjoy breakfast, dinner or a quiet drink in our cozy restaurant.</p>
+        <a class="card-link" href="#restaurant">See menu →</a>
+      </article>
     </section>
 
-    <section id="tbilisi" style="margin-top:22px">
-      <h3 style="color:var(--leaf-green)">About Tbilisi</h3>
-      <p style="color:var(--muted)">Short intro about the city, attractions, and directions.</p>
-    </section>
-
-    <section id="restaurant" style="margin-top:22px">
-      <h3 style="color:#ffd89b">Restaurant</h3>
-      <p style="color:var(--muted)">Menu highlights, opening hours and reservations.</p>
+    <section class="notice" aria-hidden="true">
+      <p>Tip: replace <code>logo.png</code> with your high-resolution circular logo for the best visual result.</p>
     </section>
   </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="muted">© <strong>Livin Hotel</strong> • Tbilisi</p>
+    </div>
+  </footer>
 </body>
 </html>

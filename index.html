@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Livin Hotel — Tbilisi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <a href="./" aria-label="Livin Hotel home" style="display:inline-flex;align-items:center;text-decoration:none">
+          <span class="site-logo" aria-hidden="true">
+            <!-- Replace logo.png with your provided logo file -->
+            <img src="logo.png" alt="Livin Hotel logo" />
+          </span>
+        </a>
+        <div>
+          <span class="site-title">Livin Hotel</span>
+          <span class="site-sub">Tbilisi • Comfort & Hospitality</span>
+        </div>
+      </div>
+
+      <div class="nav-actions" role="menubar" aria-label="Primary">
+        <!-- These are the requested containers with the exact words -->
+        <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
+        <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
+        <a class="nav-card restaurant" href="#restaurant" role="menuitem">Restaurant</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="welcome-title">
+      <div>
+        <h2 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h2>
+        <p>Experience warm hospitality with a modern, tranquil design inspired by our emblem.</p>
+      </div>
+    </section>
+
+    <!-- Placeholder sections that the navbar links can target -->
+    <section id="book" style="margin-top:28px">
+      <h3 style="color:var(--accent-red)">Book a Room</h3>
+      <p style="color:var(--muted)">Booking form and availability calendar go here.</p>
+    </section>
+
+    <section id="tbilisi" style="margin-top:22px">
+      <h3 style="color:var(--leaf-green)">About Tbilisi</h3>
+      <p style="color:var(--muted)">Short intro about the city, attractions, and directions.</p>
+    </section>
+
+    <section id="restaurant" style="margin-top:22px">
+      <h3 style="color:#ffd89b">Restaurant</h3>
+      <p style="color:var(--muted)">Menu highlights, opening hours and reservations.</p>
+    </section>
+  </main>
+</body>
+</html>

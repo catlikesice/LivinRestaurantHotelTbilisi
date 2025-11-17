@@ -1,11 +1,11 @@
 :root{
-  --bg: #000000;              /* pure black like logo */
+  --bg: #010101;              /* pure black like logo */
   --bg-deep: #050505;
-  --accent-red: #ff2018;      /* vivid Om red */
-  --leaf-green: #126043;      /* deep leaf green */
+  --accent-red: #ff1b14;      /* vivid Om red */
+  --leaf-green: #1faf4e;      /* bright leaf green */
   --white: #ffffff;
-  --muted: #bfc3c3;
-  --muted-2: #9aa3a3;
+  --muted: #c2c6c6;
+  --muted-2: #a3abab;
   --glass: rgba(255,255,255,0.02);
   --card-radius: 14px;
   --shadow-lg: 0 18px 50px rgba(0,0,0,0.75);
@@ -21,8 +21,8 @@ html,body{height:100%}
 body{
   margin:0;
   background:
-    radial-gradient(circle at 18% 12%, rgba(18,96,63,0.06), transparent 6%),
-    radial-gradient(circle at 85% 85%, rgba(255,32,24,0.03), transparent 6%),
+    radial-gradient(circle at 18% 12%, rgba(31,175,78,0.08), transparent 7%),
+    radial-gradient(circle at 82% 88%, rgba(255,27,20,0.05), transparent 7%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
   color:var(--muted);
   font-family:var(--ui-font);
@@ -84,7 +84,7 @@ body{
   inset: 10px; /* places ring inside the white border */
   border-radius: 50%;
   pointer-events: none;
-  box-shadow: 0 0 0 3px rgba(18,96,63,0.55); /* inner green ring */
+  box-shadow: 0 0 0 3px rgba(31,175,78,0.55); /* inner green ring */
   mix-blend-mode: normal;
   opacity: 0.95;
 }
@@ -150,33 +150,34 @@ body{
 }
 
 /* Specific themed cards that match the logo */
-.nav-card.book{
-  color: #fff;
-  background: linear-gradient(180deg, rgba(255,32,24,0.10), rgba(0,0,0,0.22));
-  border-left:4px solid var(--accent-red);
-  box-shadow: 0 10px 40px rgba(255,32,24,0.06);
-  text-shadow: 0 6px 24px rgba(255,32,24,0.06);
-}
-.nav-card.about{
-  color: #fff;
-  background: linear-gradient(180deg, rgba(18,96,63,0.08), rgba(0,0,0,0.22));
-  border-left:4px solid var(--leaf-green);
-  box-shadow: 0 10px 40px rgba(18,96,63,0.06);
-}
-.nav-card.restaurant{
-  color:#111;
-  background: linear-gradient(180deg, rgba(255,216,155,0.12), rgba(0,0,0,0.12));
-  border-left:4px solid #ffd89b;
-}
+  .nav-card.book{
+    color: #fff;
+    background: linear-gradient(180deg, rgba(255,27,20,0.12), rgba(0,0,0,0.22));
+    border-left:4px solid var(--accent-red);
+    box-shadow: 0 10px 40px rgba(255,27,20,0.08);
+    text-shadow: 0 6px 24px rgba(255,27,20,0.08);
+  }
+  .nav-card.about{
+    color: #fff;
+    background: linear-gradient(180deg, rgba(31,175,78,0.08), rgba(0,0,0,0.22));
+    border-left:4px solid var(--leaf-green);
+    box-shadow: 0 10px 40px rgba(31,175,78,0.08);
+  }
+  .nav-card.restaurant{
+    color: #fff;
+    background: linear-gradient(180deg, rgba(31,175,78,0.12), rgba(0,0,0,0.28));
+    border-left:4px solid var(--leaf-green);
+    box-shadow: 0 10px 40px rgba(31,175,78,0.08);
+  }
 
 /* Main / hero area */
 .site-main { padding: 28px 20px 60px; }
-.hero{
-  display:flex;
-  gap:28px;
-  align-items:center;
-  justify-content:space-between;
-  background: linear-gradient(90deg, rgba(18,96,63,0.03), rgba(255,32,24,0.02));
+  .hero{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    justify-content:space-between;
+    background: linear-gradient(90deg, rgba(31,175,78,0.05), rgba(255,27,20,0.04));
   border-radius:18px;
   padding:28px;
   box-shadow: var(--shadow-sm);
@@ -193,9 +194,9 @@ body{
   letter-spacing:0.4px;
   margin-bottom:8px;
   /* red glow like the Om symbol */
-  text-shadow:
-    0 8px 28px rgba(255,32,24,0.25),
-    0 2px 8px rgba(255,32,24,0.14);
+    text-shadow:
+      0 8px 28px rgba(255,27,20,0.28),
+      0 2px 8px rgba(255,27,20,0.16);
 }
 .lead{
   color:var(--muted-2);
@@ -216,7 +217,7 @@ body{
 .cta.primary{
   background: linear-gradient(90deg, var(--accent-red), #c21511);
   color: #fff;
-  box-shadow: 0 10px 30px rgba(255,32,24,0.18);
+  box-shadow: 0 10px 30px rgba(255,27,20,0.22);
 }
 .cta.ghost{
   background: transparent;
@@ -226,27 +227,27 @@ body{
 
 /* Decorative circular visual that echoes the logo — dark center and green ring */
 .hero-visual{ display:flex; align-items:center; justify-content:center; }
-.logo-circle{
-  width:132px;
-  height:132px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: radial-gradient(circle at 30% 30%, rgba(18,96,63,0.12), rgba(0,0,0,0.45));
+  .logo-circle{
+    width:132px;
+    height:132px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background: radial-gradient(circle at 30% 30%, rgba(31,175,78,0.14), rgba(0,0,0,0.52));
   border:6px solid rgba(255,255,255,0.02);
   box-shadow: 0 24px 70px rgba(0,0,0,0.8);
   position:relative;
 }
 /* inner dark ring to mimic logo's empty circle */
-.logo-circle::after{
-  content:"";
-  position:absolute;
-  inset:10px;
-  border-radius:50%;
-  box-shadow: inset 0 0 0 4px rgba(18,96,63,0.25);
-  pointer-events:none;
-}
+  .logo-circle::after{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border-radius:50%;
+    box-shadow: inset 0 0 0 4px rgba(31,175,78,0.32);
+    pointer-events:none;
+  }
 .logo-circle img{ width:76%; height:76%; object-fit:contain; display:block; border-radius:50%; background:var(--bg); }
 
 /* Section cards grid */

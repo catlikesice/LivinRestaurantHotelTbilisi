@@ -172,6 +172,75 @@
         gap: 28px;
       }
 
+      .room-showcase {
+        padding: clamp(24px, 5vw, 48px);
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: rgba(8, 10, 16, 0.7);
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 22px;
+      }
+
+      .room-showcase h2 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        color: var(--white);
+      }
+
+      .room-showcase p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.78);
+        max-width: 640px;
+      }
+
+      .room-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      }
+
+      .room-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .room-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+      }
+
+      .room-thumb {
+        border-radius: 12px;
+        height: 140px;
+        background: linear-gradient(135deg, rgba(255, 76, 41, 0.2), rgba(46, 204, 113, 0.18));
+        border: 1px dashed rgba(255, 255, 255, 0.18);
+        display: grid;
+        place-items: center;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .room-card h3 {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.05rem;
+      }
+
+      .room-card p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
       fieldset {
         border: none;
         margin: 0;
@@ -375,6 +444,59 @@
             Complimentary wellness ritual
             <span>Nightly</span>
           </div>
+        </div>
+      </section>
+
+      <section class="room-showcase" aria-labelledby="room-highlights">
+        <div>
+          <h2 id="room-highlights">Preview the suites &amp; residences</h2>
+          <p>
+            Explore the collection awaiting you below. We’ll swap in rich photography and
+            detailed narratives as soon as you share them, but for now each card marks a
+            dedicated space in the story.
+          </p>
+        </div>
+        <div class="room-grid">
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>King Room with Balcony</h3>
+            <p>Perfect for sunrise rituals and private espresso moments overlooking the ridge.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Deluxe Double (or Twin Room) with Balcony</h3>
+            <p>Versatile layout with twin or double styling and breezy open-air lounging.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>King Room with Garden View</h3>
+            <p>Grounded in greenery with botanical outlooks and curated wellness touches.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Triple Room with City View</h3>
+            <p>Ample space for three and a cinematic panorama of the city’s glittering lights.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Family Suite with Balcony</h3>
+            <p>Flexible suite with lounging nooks and balcony seating for the whole crew.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Deluxe Double (or Twin Room) with Garden View</h3>
+            <p>A tranquil twin-or-double arrangement framed by private courtyard vistas.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Triple Room with Garden View</h3>
+            <p>Cozy triple setup nestled near the herb gardens and morning yoga lawn.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Studio Apartment</h3>
+            <p>Residential-style studio with galley kitchen for longer creative retreats.</p>
+          </article>
         </div>
       </section>
 

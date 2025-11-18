@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="site-header" role="banner">
-    <div class="navbar" role="navigation" aria-label="Main navigation">
+      <div class="navbar" role="navigation" aria-label="Main navigation">
       <a class="brand" href="./" aria-label="Livin Hotel home">
         <span class="site-logo" aria-hidden="true">
           <!-- Replace logo.png with your provided logo file -->
@@ -22,12 +22,25 @@
         </div>
       </a>
 
-      <nav class="nav-actions" role="menubar" aria-label="Primary">
-        <!-- These are the requested containers with the exact words -->
-        <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
-        <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
-        <a class="nav-card restaurant" href="#restaurant" role="menuitem">Restaurant</a>
-      </nav>
+        <div class="nav-right">
+          <nav class="nav-actions" role="menubar" aria-label="Primary">
+            <!-- These are the requested containers with the exact words -->
+            <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
+            <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
+            <a class="nav-card restaurant" href="#restaurant" role="menuitem">Restaurant</a>
+          </nav>
+
+          <div class="language-selector">
+            <label class="sr-only" for="site-language">Select site language</label>
+            <select id="site-language" name="site-language">
+              <option value="en" selected>English</option>
+              <option value="ka">Georgian</option>
+              <option value="ru">Russian</option>
+              <option value="hy">Armenian</option>
+              <option value="de">German</option>
+            </select>
+          </div>
+        </div>
     </div>
   </header>
 

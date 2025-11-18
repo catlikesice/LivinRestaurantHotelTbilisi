@@ -55,6 +55,51 @@ body{
   justify-content:space-between;
   gap:20px;
 }
+.nav-right{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.language-selector{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.language-selector select{
+  appearance:none;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.4);
+  color:#fff;
+  font-family:var(--ui-font);
+  font-weight:600;
+  padding:8px 38px 8px 16px;
+  min-width:160px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(0,0,0,0.45);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.language-selector::after{
+  content:"";
+  position:absolute;
+  right:18px;
+  top:50%;
+  transform:translateY(-25%);
+  width:0;
+  height:0;
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:6px solid var(--muted);
+  pointer-events:none;
+}
+.language-selector select:focus{
+  outline:none;
+  border-color:var(--accent-red);
+  box-shadow:0 0 0 2px rgba(255,27,20,0.25);
+}
 
 /* Brand & logo — styled to mimic the circular logo with white outer ring and inner green ring */
 .brand{
@@ -401,6 +446,20 @@ body{
 @media (max-width:700px){
   .navbar{ gap:12px; }
   .site-logo{ width:64px; height:64px; border-width:5px; }
+  .nav-right{
+    width:100%;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:10px;
+  }
+  .language-selector{
+    width:100%;
+    justify-content:flex-end;
+  }
+  .language-selector select{
+    width:100%;
+    max-width:220px;
+  }
   .hero{ flex-direction:column-reverse; align-items:flex-start; padding:20px; }
   .hero-content{ max-width:100%; }
   .logo-circle{ width:110px; height:110px; margin-bottom:8px; }

@@ -1,1 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Serenity Haven | Book Your Stay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #020304;
+        --panel: rgba(6, 8, 12, 0.8);
+        --panel-2: rgba(255, 255, 255, 0.04);
+        --white: #fff;
+        --muted: #d6dadd;
+        --accent: #ff4c29;
+        --accent-dark: #c83115;
+        --green: #2ecc71;
+        --radius: 18px;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: var(--muted);
+        background: radial-gradient(circle at 15% 20%, rgba(46, 204, 113, 0.2), transparent),
+          radial-gradient(circle at 80% 15%, rgba(255, 76, 41, 0.2), transparent),
+          linear-gradient(135deg, #010101, #050608 58%, #090b12);
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .site-header {
+        padding: 24px clamp(16px, 4vw, 60px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        background: rgba(2, 3, 4, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        z-index: 10;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        border: 5px solid rgba(255, 255, 255, 0.15);
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle, rgba(46, 204, 113, 0.2), transparent);
+        box-shadow: inset 0 0 0 3px rgba(46, 204, 113, 0.5), var(--shadow);
+        font-family: "Playfair Display", serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .brand-text span {
+        display: block;
+      }
+
+      .brand-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: var(--white);
+      }
+
+      .brand-tagline {
+        font-size: 0.85rem;
+        color: var(--green);
+        letter-spacing: 0.04em;
+      }
+
+      .header-cta a {
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        text-decoration: none;
+        backdrop-filter: blur(4px);
+        transition: transform 0.2s ease, background 0.2s ease;
+        font-weight: 600;
+      }
+
+      .header-cta a:hover {
+        transform: translateY(-3px);
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      main {
+        flex: 1;
+        width: min(1200px, 92%);
+        margin: 0 auto 120px;
+        display: grid;
+        gap: 32px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+        padding: clamp(24px, 6vw, 48px);
+        border-radius: var(--radius);
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        box-shadow: var(--shadow);
+      }
+
+      .hero h1 {
+        margin: 0 0 12px 0;
+        color: var(--white);
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        font-family: "Playfair Display", serif;
+      }
+
+      .hero p {
+        margin: 0 0 20px 0;
+        font-size: 1.05rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .hero-details {
+        display: grid;
+        gap: 12px;
+      }
+
+      .hero-chip {
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .booking-form {
+        background: rgba(3, 5, 8, 0.9);
+        border-radius: var(--radius);
+        padding: clamp(24px, 5vw, 40px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 28px;
+      }
+
+      .room-showcase {
+        padding: clamp(24px, 5vw, 48px);
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        background: rgba(8, 10, 16, 0.7);
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 22px;
+      }
+
+      .room-showcase h2 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+        color: var(--white);
+      }
+
+      .room-showcase p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.78);
+        max-width: 640px;
+      }
+
+      .room-grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      }
+
+      .room-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 18px;
+        display: grid;
+        gap: 12px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .room-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent);
+      }
+
+      .room-thumb {
+        border-radius: 12px;
+        height: 140px;
+        background: linear-gradient(135deg, rgba(255, 76, 41, 0.2), rgba(46, 204, 113, 0.18));
+        border: 1px dashed rgba(255, 255, 255, 0.18);
+        display: grid;
+        place-items: center;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .room-card h3 {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.05rem;
+      }
+
+      .room-card p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      fieldset {
+        border: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 16px;
+      }
+
+      legend {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--white);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(255, 76, 41, 0.35);
+      }
+
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .grid-two {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .submit-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .submit-row button {
+        padding: 14px 24px;
+        border-radius: 14px;
+        border: none;
+        background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 16px 32px rgba(255, 76, 41, 0.25);
+        transition: transform 0.2s ease;
+      }
+
+      .submit-row button:hover {
+        transform: translateY(-2px);
+      }
+
+      .submit-row small {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .date-box {
+        position: sticky;
+        bottom: 0;
+        margin-top: auto;
+        background: rgba(2, 3, 4, 0.92);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 24px clamp(16px, 4vw, 60px) 36px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 -20px 35px rgba(0, 0, 0, 0.65);
+      }
+
+      .date-box-inner {
+        width: min(1200px, 92%);
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        align-items: end;
+      }
+
+      .date-box h2 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        color: var(--white);
+        font-size: 1.4rem;
+      }
+
+      .date-input label {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+      }
+
+      .date-input input {
+        margin-top: 8px;
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .date-box button {
+        padding: 14px 22px;
+        border: none;
+        border-radius: 14px;
+        background: var(--green);
+        color: var(--bg);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 10px 22px rgba(46, 204, 113, 0.35);
+      }
+
+      .date-box button:hover {
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 640px) {
+        .site-header {
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        .hero {
+          padding: 22px;
+        }
+
+        .booking-form {
+          padding: 24px;
+        }
+
+        .date-box-inner {
+          grid-template-columns: 1fr;
+        }
+
+        .date-box button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#">
+        <span class="brand-logo">SH</span>
+        <span class="brand-text">
+          <span class="brand-title">Serenity Haven</span>
+          <span class="brand-tagline">Elevated Stays &amp; Spa</span>
+        </span>
+      </a>
+      <div class="header-cta">
+        <a href="#booking-form">Plan My Retreat</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Boutique Mountain Escape</p>
+          <h1>Reserve your private hideaway with just a few details.</h1>
+          <p>
+            Choose from our curated suites, each framed by private balconies, sculpted
+            gardens, and skyline views. Let us know how we can personalize your arrival.
+          </p>
+        </div>
+        <div class="hero-details">
+          <div class="hero-chip">
+            Skyline Lounge Access
+            <span>Included</span>
+          </div>
+          <div class="hero-chip">
+            Flexible check-in
+            <span>12 PM – 7 PM</span>
+          </div>
+          <div class="hero-chip">
+            Complimentary wellness ritual
+            <span>Nightly</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="room-showcase" aria-labelledby="room-highlights">
+        <div>
+          <h2 id="room-highlights">Preview the suites &amp; residences</h2>
+          <p>
+            Explore the collection awaiting you below. We’ll swap in rich photography and
+            detailed narratives as soon as you share them, but for now each card marks a
+            dedicated space in the story.
+          </p>
+        </div>
+        <div class="room-grid">
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>King Room with Balcony</h3>
+            <p>Perfect for sunrise rituals and private espresso moments overlooking the ridge.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Deluxe Double (or Twin Room) with Balcony</h3>
+            <p>Versatile layout with twin or double styling and breezy open-air lounging.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>King Room with Garden View</h3>
+            <p>Grounded in greenery with botanical outlooks and curated wellness touches.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Triple Room with City View</h3>
+            <p>Ample space for three and a cinematic panorama of the city’s glittering lights.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Family Suite with Balcony</h3>
+            <p>Flexible suite with lounging nooks and balcony seating for the whole crew.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Deluxe Double (or Twin Room) with Garden View</h3>
+            <p>A tranquil twin-or-double arrangement framed by private courtyard vistas.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Triple Room with Garden View</h3>
+            <p>Cozy triple setup nestled near the herb gardens and morning yoga lawn.</p>
+          </article>
+          <article class="room-card">
+            <div class="room-thumb">Image coming soon</div>
+            <h3>Studio Apartment</h3>
+            <p>Residential-style studio with galley kitchen for longer creative retreats.</p>
+          </article>
+        </div>
+      </section>
+
+      <form id="booking-form" class="booking-form">
+        <fieldset>
+          <legend>Guest Details</legend>
+          <div class="grid-two">
+            <label>
+              Full Name
+              <input type="text" name="full-name" placeholder="Avery Collins" required />
+            </label>
+            <label>
+              Email Address
+              <input type="email" name="email" placeholder="avery@email.com" required />
+            </label>
+          </div>
+          <div class="grid-two">
+            <label>
+              Phone Number
+              <input type="tel" name="phone" placeholder="+1 (415) 555‑0140" />
+            </label>
+            <label>
+              Country of Residence
+              <input type="text" name="country" placeholder="United States" />
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Stay Preferences</legend>
+          <div class="grid-two">
+            <label>
+              Number of Guests
+              <input type="number" name="guests" min="1" max="8" value="2" />
+            </label>
+            <label>
+              Room Type
+              <select name="room-type" required>
+                <option value="" disabled selected>Select a room category</option>
+                <option>King Room with Balcony</option>
+                <option>Deluxe Double (or Twin Room) with Balcony</option>
+                <option>King Room with Garden View</option>
+                <option>Triple Room with City View</option>
+                <option>Family Suite with Balcony</option>
+                <option>Deluxe Double (or Twin Room) with Garden View</option>
+                <option>Triple Room with Garden View</option>
+                <option>Studio Apartment</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Special Requests
+            <textarea name="requests" placeholder="Tell us about celebrations, pillow preferences, or arrival notes."></textarea>
+          </label>
+        </fieldset>
+
+        <div class="submit-row">
+          <button type="submit">Save My Request</button>
+          <small>We confirm within one business day with tailored recommendations.</small>
+        </div>
+      </form>
+    </main>
+
+    <section class="date-box" aria-label="Stay dates selector">
+      <div class="date-box-inner">
+        <h2>Choose your stay dates</h2>
+        <div class="date-input">
+          <label for="check-in">Check-in</label>
+          <input id="check-in" type="date" name="check-in" required />
+        </div>
+        <div class="date-input">
+          <label for="check-out">Check-out</label>
+          <input id="check-out" type="date" name="check-out" required />
+        </div>
+        <button type="button" id="lock-dates">Lock in Dates</button>
+      </div>
+    </section>
+
+    <script>
+      const today = new Date().toISOString().split("T")[0];
+      const checkIn = document.getElementById("check-in");
+      const checkOut = document.getElementById("check-out");
+
+      checkIn.min = today;
+      checkOut.min = today;
+
+      checkIn.addEventListener("change", () => {
+        if (checkOut.value && checkOut.value <= checkIn.value) {
+          checkOut.value = "";
+        }
+        checkOut.min = checkIn.value || today;
+      });
+
+      document.getElementById("lock-dates").addEventListener("click", () => {
+        if (!checkIn.value || !checkOut.value) {
+          alert("Please select both check-in and check-out dates.");
+          return;
+        }
+        alert(
+          `We'll hold a suite from ${checkIn.value} to ${checkOut.value}. A concierge will follow up shortly.`
+        );
+      });
+    </script>
+  </body>
+</html>
 

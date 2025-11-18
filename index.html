@@ -44,156 +44,28 @@
     </div>
   </header>
 
-  <main class="site-main">
-      <section class="hero" aria-labelledby="welcome-title">
-      <div class="hero-content">
-        <h1 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h1>
-        <p class="lead">Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.</p>
-        <p class="hero-actions">
-          <a class="cta primary" href="#book">Check Availability</a>
-          <a class="cta ghost" href="#tbilisi">Explore Tbilisi</a>
-        </p>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <!-- Decorative circular motif that echoes the logo -->
-        <div class="logo-circle">
-          <img src="logo.png" alt="" />
+    <main class="site-main">
+        <section class="hero" aria-labelledby="welcome-title">
+        <div class="hero-content">
+          <h1 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h1>
+          <p class="lead">Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.</p>
+          <p class="hero-actions">
+            <a class="cta primary" href="#book">Check Availability</a>
+            <a class="cta ghost" href="#tbilisi">Explore Tbilisi</a>
+          </p>
         </div>
-      </div>
-    </section>
-
-      <section id="translator" class="translator-section" aria-labelledby="translator-title">
-        <div class="translator-headline">
-          <h2 id="translator-title">Multilingual Translator</h2>
-          <p>Translate between Georgian, English, Russian, Armenian, and German in seconds.</p>
+        <div class="hero-visual" aria-hidden="true">
+          <!-- Decorative circular motif that echoes the logo -->
+          <div class="logo-circle">
+            <img src="logo.png" alt="" />
+          </div>
         </div>
-
-        <form class="translator-form" aria-label="Multilingual translator tool">
-          <div class="translator-fields">
-            <fieldset class="translator-field">
-              <label for="source-language">From</label>
-              <select id="source-language" name="source-language">
-                <option value="ka">Georgian</option>
-                <option value="en" selected>English</option>
-                <option value="ru">Russian</option>
-                <option value="hy">Armenian</option>
-                <option value="de">German</option>
-              </select>
-              <label class="sr-only" for="source-text">Source text</label>
-              <textarea id="source-text" name="source-text" rows="6" placeholder="Type or paste text to translate..."></textarea>
-            </fieldset>
-
-            <div class="translator-actions">
-              <button type="button" class="swap-button" id="swap-languages" aria-label="Swap languages">
-                ↕
-              </button>
-            </div>
-
-            <fieldset class="translator-field">
-              <label for="target-language">To</label>
-              <select id="target-language" name="target-language">
-                <option value="ka">Georgian</option>
-                <option value="en">English</option>
-                <option value="ru" selected>Russian</option>
-                <option value="hy">Armenian</option>
-                <option value="de">German</option>
-              </select>
-              <label class="sr-only" for="target-text">Translated text</label>
-              <textarea id="target-text" name="target-text" rows="6" placeholder="Translated text appears here..." readonly></textarea>
-            </fieldset>
-          </div>
-
-          <div class="translator-cta">
-            <button type="button" id="translate-button" class="cta primary">Translate</button>
-            <output id="translator-status" class="translator-status" role="status" aria-live="polite"></output>
-          </div>
-        </form>
       </section>
-
+    </main>
 <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <p class="muted">© <strong>Livin Hotel</strong> • Tbilisi</p>
     </div>
   </footer>
-
-    <script>
-      (function () {
-        const translateBtn = document.getElementById('translate-button');
-        const swapBtn = document.getElementById('swap-languages');
-        const sourceLang = document.getElementById('source-language');
-        const targetLang = document.getElementById('target-language');
-        const sourceText = document.getElementById('source-text');
-        const targetText = document.getElementById('target-text');
-        const statusEl = document.getElementById('translator-status');
-
-        const API_ENDPOINT = 'https://api.mymemory.translated.net/get';
-
-        function setStatus(message = '', isError = false) {
-          statusEl.textContent = message;
-          statusEl.classList.toggle('error', Boolean(isError));
-        }
-
-        async function translate() {
-          const text = sourceText.value.trim();
-          const from = sourceLang.value;
-          const to = targetLang.value;
-
-          if (!text) {
-            setStatus('Please enter text to translate.', true);
-            targetText.value = '';
-            return;
-          }
-
-          if (from === to) {
-            targetText.value = text;
-            setStatus('Same languages selected — text copied.', false);
-            return;
-          }
-
-          translateBtn.disabled = true;
-          setStatus('Translating...');
-
-          try {
-            const url = `${API_ENDPOINT}?q=${encodeURIComponent(text)}&langpair=${from}|${to}`;
-            const response = await fetch(url);
-
-            if (!response.ok) {
-              throw new Error('Network error');
-            }
-
-            const data = await response.json();
-            const translated = data?.responseData?.translatedText;
-
-            if (!translated) {
-              throw new Error('Translation unavailable');
-            }
-
-            targetText.value = translated;
-            setStatus('Translation ready.');
-          } catch (error) {
-            console.error(error);
-            setStatus('Unable to translate right now. Please try again.', true);
-          } finally {
-            translateBtn.disabled = false;
-          }
-        }
-
-        function swapLanguages() {
-          const currentSource = sourceLang.value;
-          sourceLang.value = targetLang.value;
-          targetLang.value = currentSource;
-
-          if (sourceText.value && targetText.value) {
-            const originalSourceText = sourceText.value;
-            sourceText.value = targetText.value;
-            targetText.value = originalSourceText;
-          }
-          setStatus('');
-        }
-
-        translateBtn?.addEventListener('click', translate);
-        swapBtn?.addEventListener('click', swapLanguages);
-      })();
-    </script>
 </body>
 </html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Serenity Haven | Payment &amp; Guest Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #010203;
+        --panel: rgba(4, 6, 10, 0.92);
+        --panel-soft: rgba(255, 255, 255, 0.04);
+        --white: #fff;
+        --muted: #cad0d4;
+        --accent: #ff4c29;
+        --accent-dark: #c83115;
+        --green: #2ecc71;
+        --radius: 22px;
+        --shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: var(--muted);
+        background: radial-gradient(circle at 20% 20%, rgba(46, 204, 113, 0.15), transparent),
+          radial-gradient(circle at 80% 0%, rgba(255, 76, 41, 0.15), transparent),
+          linear-gradient(140deg, #010101, #050608 58%, #0b0f18);
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .site-header {
+        padding: 24px clamp(16px, 4vw, 60px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(1, 2, 3, 0.85);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--white);
+        text-decoration: none;
+      }
+
+      .brand-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.18);
+        display: grid;
+        place-items: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        box-shadow: inset 0 0 0 3px rgba(46, 204, 113, 0.45), var(--shadow);
+      }
+
+      .brand-text span {
+        display: block;
+      }
+
+      .brand-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        color: var(--white);
+      }
+
+      .brand-tagline {
+        font-size: 0.85rem;
+        color: var(--green);
+        letter-spacing: 0.04em;
+      }
+
+      .header-cta a {
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 600;
+        backdrop-filter: blur(4px);
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .header-cta a:hover {
+        transform: translateY(-3px);
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      main {
+        flex: 1;
+        width: min(960px, 92%);
+        margin: 0 auto 120px;
+        display: grid;
+        gap: 24px;
+      }
+
+      .checkout-card {
+        margin-top: 40px;
+        background: var(--panel);
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        padding: clamp(24px, 5vw, 48px);
+        box-shadow: var(--shadow);
+        display: grid;
+        gap: 28px;
+      }
+
+      .checkout-card h1 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        color: var(--white);
+      }
+
+      .eyebrow {
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0 0 12px 0;
+      }
+
+      .checkout-form {
+        display: grid;
+        gap: 24px;
+      }
+
+      fieldset {
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 24px;
+        margin: 0;
+        display: grid;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      legend {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: var(--white);
+        padding: 0 6px;
+      }
+
+      label {
+        display: grid;
+        gap: 6px;
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--white);
+        font-size: 1rem;
+        font-family: inherit;
+        transition: border 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(255, 76, 41, 0.35);
+      }
+
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .grid-two {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .consent {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        font-size: 0.9rem;
+      }
+
+      .consent input {
+        width: auto;
+        margin-top: 4px;
+      }
+
+      .submit-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+
+      .submit-row button {
+        padding: 16px 28px;
+        border-radius: 14px;
+        border: none;
+        background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 16px 32px rgba(255, 76, 41, 0.25);
+        transition: transform 0.2s ease;
+      }
+
+      .submit-row button:hover {
+        transform: translateY(-2px);
+      }
+
+      .back-link {
+        color: var(--green);
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 640px) {
+        .site-header {
+          flex-direction: column;
+          gap: 18px;
+        }
+
+        fieldset {
+          padding: 18px;
+        }
+
+        .submit-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .submit-row button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html">
+        <span class="brand-logo">SH</span>
+        <span class="brand-text">
+          <span class="brand-title">Serenity Haven</span>
+          <span class="brand-tagline">Elevated Stays &amp; Spa</span>
+        </span>
+      </a>
+      <div class="header-cta">
+        <a href="./booking.html">Back to availability</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="checkout-card">
+        <div>
+          <p class="eyebrow">Step 2 · Secure Booking</p>
+          <h1>Guest details &amp; payment</h1>
+          <p>
+            Tell us who will be joining us, then add your payment details so we can finalize
+            the reservation. Your concierge will confirm within one business day.
+          </p>
+        </div>
+
+        <form class="checkout-form">
+          <fieldset>
+            <legend>Guest Details</legend>
+            <div class="grid-two">
+              <label>
+                Full Name
+                <input type="text" name="full-name" placeholder="Avery Collins" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" name="email" placeholder="avery@email.com" required />
+              </label>
+            </div>
+            <div class="grid-two">
+              <label>
+                Phone Number
+                <input type="tel" name="phone" placeholder="+1 (415) 555‑0140" />
+              </label>
+              <label>
+                Country of Residence
+                <input type="text" name="country" placeholder="United States" />
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment Method</legend>
+            <div class="grid-two">
+              <label>
+                Cardholder Name
+                <input type="text" name="card-name" placeholder="Avery Collins" required />
+              </label>
+              <label>
+                Card Number
+                <input
+                  type="text"
+                  name="card-number"
+                  inputmode="numeric"
+                  pattern="\d{13,19}"
+                  placeholder="4242 4242 4242 4242"
+                  required
+                />
+              </label>
+            </div>
+            <div class="grid-two">
+              <label>
+                Expiry Date
+                <input type="month" name="expiry" required />
+              </label>
+              <label>
+                Security Code
+                <input type="password" name="cvc" maxlength="4" placeholder="123" required />
+              </label>
+            </div>
+            <label>
+              Billing Address
+              <textarea name="billing-address" placeholder="Street, city, region, postal code"></textarea>
+            </label>
+          </fieldset>
+
+          <label class="consent">
+            <input type="checkbox" required />
+            <span>
+              I authorize Serenity Haven to place a secure hold on my card for the first night and
+              agree to the flexible cancellation policy.
+            </span>
+          </label>
+
+          <div class="submit-row">
+            <a class="back-link" href="./booking.html">← Back to stay preferences</a>
+            <button type="submit">Confirm &amp; Pay</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

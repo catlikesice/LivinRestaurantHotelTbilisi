@@ -9,51 +9,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header" role="banner">
-      <div class="navbar" role="navigation" aria-label="Main navigation">
-      <a class="brand" href="./" aria-label="Livin Hotel home">
-        <span class="site-logo" aria-hidden="true">
-          <!-- Replace logo.png with your provided logo file -->
-          <img src="logo.png" alt="Livin Hotel logo">
-        </span>
-        <div class="brand-text">
-          <span class="site-title">Livin Hotel</span>
-          <span class="site-sub">Tbilisi • Comfort & Hospitality</span>
-        </div>
-      </a>
-
-        <div class="nav-right">
-          <nav class="nav-actions" role="menubar" aria-label="Primary">
-            <!-- These are the requested containers with the exact words -->
-            <a class="nav-card book" href="#book" role="menuitem">Book a Room</a>
-            <a class="nav-card about" href="#tbilisi" role="menuitem">About Tbilisi</a>
-            <a class="nav-card restaurant" href="#restaurant" role="menuitem">Restaurant</a>
-          </nav>
-
-          <div class="language-selector">
-            <label class="sr-only" for="site-language">Select site language</label>
-            <select id="site-language" name="site-language">
-              <option value="en" selected>English</option>
-              <option value="ka">Georgian</option>
-              <option value="ru">Russian</option>
-              <option value="hy">Armenian</option>
-              <option value="de">German</option>
-            </select>
+    <header class="site-header" role="banner">
+        <div class="navbar" role="navigation" aria-label="Main navigation">
+        <a class="brand" href="./" aria-label="Livin Hotel home">
+          <span class="site-logo" aria-hidden="true">
+            <!-- Replace logo.png with your provided logo file -->
+            <img src="logo.png" alt="Livin Hotel logo">
+          </span>
+          <div class="brand-text">
+            <span class="site-title">Livin Hotel</span>
+            <span class="site-sub" data-i18n="tagline">Tbilisi • Comfort & Hospitality</span>
           </div>
-        </div>
+        </a>
+
+          <div class="nav-right">
+            <nav class="nav-actions" role="menubar" aria-label="Primary">
+              <!-- These are the requested containers with the exact words -->
+              <a class="nav-card book" href="#book" role="menuitem" data-i18n="navBook">Book a Room</a>
+              <a class="nav-card about" href="#tbilisi" role="menuitem" data-i18n="navAbout">About Tbilisi</a>
+              <a class="nav-card restaurant" href="#restaurant" role="menuitem" data-i18n="navRestaurant">Restaurant</a>
+            </nav>
+
+            <div class="language-selector">
+              <label class="sr-only" for="site-language" data-i18n="languageLabel">Select site language</label>
+              <select id="site-language" name="site-language">
+                <option value="en" lang="en" selected>English</option>
+                <option value="ka" lang="ka">ქართული</option>
+                <option value="ru" lang="ru">Русский</option>
+                <option value="hy" lang="hy">Հայերեն</option>
+                <option value="de" lang="de">Deutsch</option>
+              </select>
+            </div>
+          </div>
     </div>
   </header>
 
     <main class="site-main">
         <section class="hero" aria-labelledby="welcome-title">
-        <div class="hero-content">
-          <h1 id="welcome-title">Welcome to Livin Hotel — Tbilisi</h1>
-          <p class="lead">Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.</p>
-          <p class="hero-actions">
-            <a class="cta primary" href="#book">Check Availability</a>
-            <a class="cta ghost" href="#tbilisi">Explore Tbilisi</a>
-          </p>
-        </div>
+          <div class="hero-content">
+            <h1 id="welcome-title" data-i18n="heroTitle">Welcome to Livin Hotel — Tbilisi</h1>
+            <p class="lead" data-i18n="heroLead">Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.</p>
+            <p class="hero-actions">
+              <a class="cta primary" href="#book" data-i18n="ctaBook">Check Availability</a>
+              <a class="cta ghost" href="#tbilisi" data-i18n="ctaExplore">Explore Tbilisi</a>
+            </p>
+          </div>
         <div class="hero-visual" aria-hidden="true">
           <!-- Decorative circular motif that echoes the logo -->
           <div class="logo-circle">
@@ -64,8 +64,112 @@
     </main>
 <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <p class="muted">© <strong>Livin Hotel</strong> • Tbilisi</p>
+      <p class="muted" data-i18n="footerCopy" data-i18n-html="true">© <strong>Livin Hotel</strong> • Tbilisi</p>
     </div>
   </footer>
+  <script type="module">
+    const translations = {
+      en: {
+        pageTitle: 'Livin Hotel — Tbilisi',
+        languageLabel: 'Select site language',
+        navBook: 'Book a Room',
+        navAbout: 'About Tbilisi',
+        navRestaurant: 'Restaurant',
+        tagline: 'Tbilisi • Comfort & Hospitality',
+        heroTitle: 'Welcome to Livin Hotel — Tbilisi',
+        heroLead: 'Experience warm hospitality in the heart of Tbilisi. Modern comfort meets local charm — inspired by our emblem.',
+        ctaBook: 'Check Availability',
+        ctaExplore: 'Explore Tbilisi',
+        footerCopy: '© <strong>Livin Hotel</strong> • Tbilisi'
+      },
+      ka: {
+        pageTitle: 'Livin Hotel — თბილისი',
+        languageLabel: 'აირჩიეთ საიტის ენა',
+        navBook: 'დაჯავშნეთ ნომერი',
+        navAbout: 'თბილისის შესახებ',
+        navRestaurant: 'რესტორანი',
+        tagline: 'თბილისი • კომფორტი და სტუმართმოყვარეობა',
+        heroTitle: 'კეთილი იყოს თქვენი მობრძანება Livin Hotel-ში — თბილისი',
+        heroLead: 'იგრძენით თბილი სტუმართმოყვარეობა თბილისის გულში. თანამედროვე კომფორტი ერწყმის ადგილობრივ ხიბლს — შთაგონებული ჩვენი ემბლემით.',
+        ctaBook: 'შეამოწმეთ ხელმისაწვდომობა',
+        ctaExplore: 'გაიცანით თბილისი',
+        footerCopy: '© <strong>Livin Hotel</strong> • თბილისი'
+      },
+      ru: {
+        pageTitle: 'Livin Hotel — Тбилиси',
+        languageLabel: 'Выберите язык сайта',
+        navBook: 'Забронировать номер',
+        navAbout: 'О Тбилиси',
+        navRestaurant: 'Ресторан',
+        tagline: 'Тбилиси • Комфорт и гостеприимство',
+        heroTitle: 'Добро пожаловать в Livin Hotel — Тбилиси',
+        heroLead: 'Испытайте тёплое гостеприимство в самом сердце Тбилиси. Современный комфорт соединён с местным колоритом — вдохновлено нашим эмблемой.',
+        ctaBook: 'Проверить доступность',
+        ctaExplore: 'Исследовать Тбилиси',
+        footerCopy: '© <strong>Livin Hotel</strong> • Тбилиси'
+      },
+      hy: {
+        pageTitle: 'Livin Hotel — Թբիլիսի',
+        languageLabel: 'Ընտրեք կայքի լեզուն',
+        navBook: 'Ամրագրեք սենյակ',
+        navAbout: 'Թբիլիսիի մասին',
+        navRestaurant: 'Ռեստորան',
+        tagline: 'Թբիլիսի • Հարմարավետություն և հյուրընկալություն',
+        heroTitle: 'Բարի գալուստ Livin Hotel — Թբիլիսի',
+        heroLead: 'Զգացեք ջերմ հյուրընկալությունը Թբիլիսիի սրտում։ Ժամանակակից հարմարավետությունը միահյուսված է տեղական գույնի հետ՝ ներշնչված մեր խորհրդանշով։',
+        ctaBook: 'Ստուգել հասանելիությունը',
+        ctaExplore: 'Բացահայտել Թբիլիսին',
+        footerCopy: '© <strong>Livin Hotel</strong> • Թբիլիսի'
+      },
+      de: {
+        pageTitle: 'Livin Hotel — Tiflis',
+        languageLabel: 'Website-Sprache auswählen',
+        navBook: 'Zimmer buchen',
+        navAbout: 'Über Tiflis',
+        navRestaurant: 'Restaurant',
+        tagline: 'Tiflis • Komfort & Gastfreundschaft',
+        heroTitle: 'Willkommen im Livin Hotel — Tiflis',
+        heroLead: 'Erleben Sie herzliche Gastfreundschaft im Herzen von Tiflis. Moderner Komfort trifft auf lokalen Charme — inspiriert von unserem Emblem.',
+        ctaBook: 'Verfügbarkeit prüfen',
+        ctaExplore: 'Tiflis entdecken',
+        footerCopy: '© <strong>Livin Hotel</strong> • Tiflis'
+      }
+    };
+
+    const LOCALE_STORAGE_KEY = 'livin-hotel-locale';
+    const localeSelect = document.getElementById('site-language');
+    const translatableNodes = document.querySelectorAll('[data-i18n]');
+
+    const setNodeCopy = (node, value) => {
+      if (node.dataset.i18nHtml === 'true') {
+        node.innerHTML = value;
+      } else {
+        node.textContent = value;
+      }
+    };
+
+    const applyLocale = (locale) => {
+      const strings = translations[locale] ?? translations.en;
+      translatableNodes.forEach((node) => {
+        const key = node.dataset.i18n;
+        if (key && strings[key]) {
+          setNodeCopy(node, strings[key]);
+        }
+      });
+      document.title = strings.pageTitle;
+      document.documentElement.lang = locale;
+      localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    };
+
+    const initialLocale = localStorage.getItem(LOCALE_STORAGE_KEY) || localeSelect.value;
+    if (translations[initialLocale]) {
+      localeSelect.value = initialLocale;
+    }
+    applyLocale(localeSelect.value);
+
+    localeSelect.addEventListener('change', (event) => {
+      applyLocale(event.target.value);
+    });
+  </script>
 </body>
 </html>

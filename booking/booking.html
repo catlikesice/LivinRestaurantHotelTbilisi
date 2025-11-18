@@ -489,20 +489,6 @@
               Number of Guests
               <input type="number" name="guests" min="1" max="8" value="2" />
             </label>
-            <label>
-              Room Type
-              <select name="room-type" required>
-                <option value="" disabled selected>Select a room category</option>
-                <option>King Room with Balcony</option>
-                <option>Deluxe Double (or Twin Room) with Balcony</option>
-                <option>King Room with Garden View</option>
-                <option>Triple Room with City View</option>
-                <option>Family Suite with Balcony</option>
-                <option>Deluxe Double (or Twin Room) with Garden View</option>
-                <option>Triple Room with Garden View</option>
-                <option>Studio Apartment</option>
-              </select>
-            </label>
           </div>
           <label>
             Special Requests
@@ -528,6 +514,7 @@
         <div class="date-input">
           <label for="check-in">Check-in</label>
           <input id="check-in" type="date" name="check-in" required />
+          <option value="" disabled selected>Select a room category</option>
         </div>
         <div class="date-input">
           <label for="check-out">Check-out</label>

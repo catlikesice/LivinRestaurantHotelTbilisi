@@ -701,34 +701,34 @@
 
     </main>
 
-    <section class="date-box" aria-label="Stay dates selector">
-      <div class="date-box-inner">
-        <h2>Choose your stay dates</h2>
-        <div class="date-input">
-          <label for="check-in">Check-in</label>
-          <input id="check-in" type="date" name="check-in" required />
+      <section class="date-box" aria-label="Stay dates selector">
+        <div class="date-box-inner">
+          <h2 data-i18n="dateBoxTitle">Choose your stay dates</h2>
+          <div class="date-input">
+            <label for="check-in" data-i18n="checkInLabel">Check-in</label>
+            <input id="check-in" type="date" name="check-in" required />
+          </div>
+          <div class="date-input">
+            <label for="check-out" data-i18n="checkOutLabel">Check-out</label>
+            <input id="check-out" type="date" name="check-out" required />
+          </div>
+          <div class="date-input">
+            <label for="room-category" data-i18n="roomCategoryLabel">Select room category</label>
+            <select id="room-category" name="room-category" required>
+              <option value="" disabled selected data-i18n="roomCategoryPlaceholder">Select a room category</option>
+              <option value="king-balcony" data-i18n="featureKingBalconyTitle">King Room with Balcony</option>
+              <option value="deluxe-balcony" data-i18n="featureDeluxeBalconyTitle">Deluxe Double (or Twin Room) with Balcony</option>
+              <option value="king-garden" data-i18n="featureKingGardenTitle">King Room with Garden View</option>
+              <option value="triple-city" data-i18n="featureTripleCityTitle">Triple Room with City View</option>
+              <option value="family-balcony" data-i18n="featureFamilyBalconyTitle">Family Suite with Balcony</option>
+              <option value="deluxe-garden" data-i18n="featureDeluxeGardenTitle">Deluxe Double (or Twin Room) with Garden View</option>
+              <option value="triple-garden" data-i18n="featureTripleGardenTitle">Triple Room with Garden View</option>
+              <option value="studio-apartment" data-i18n="featureStudioTitle">Studio Apartment</option>
+            </select>
+          </div>
+          <button type="button" id="lock-dates" data-i18n="lockDatesCta">Lock in Dates</button>
         </div>
-        <div class="date-input">
-          <label for="check-out">Check-out</label>
-          <input id="check-out" type="date" name="check-out" required />
-        </div>
-        <div class="date-input">
-          <label for="room-category">Select room category</label>
-          <select id="room-category" name="room-category" required>
-            <option value="" disabled selected>Select a room category</option>
-            <option value="king-balcony">King Room with Balcony</option>
-            <option value="deluxe-balcony">Deluxe Double (or Twin Room) with Balcony</option>
-            <option value="king-garden">King Room with Garden View</option>
-            <option value="triple-city">Triple Room with City View</option>
-            <option value="family-balcony">Family Suite with Balcony</option>
-            <option value="deluxe-garden">Deluxe Double (or Twin Room) with Garden View</option>
-            <option value="triple-garden">Triple Room with Garden View</option>
-            <option value="studio-apartment">Studio Apartment</option>
-          </select>
-        </div>
-        <button type="button" id="lock-dates">Lock in Dates</button>
-      </div>
-    </section>
+      </section>
 
     <script type="module">
       const translations = {
@@ -754,8 +754,14 @@
             featureDeluxeGardenDesc: 'A tranquil twin-or-double arrangement framed by private courtyard vistas.',
             featureTripleGardenTitle: 'Triple Room with Garden View',
             featureTripleGardenDesc: 'Cozy triple setup nestled near the herb gardens and morning yoga lawn.',
-            featureStudioTitle: 'Studio Apartment',
-            featureStudioDesc: 'Residential-style studio with galley kitchen for longer creative retreats.'
+              featureStudioTitle: 'Studio Apartment',
+              featureStudioDesc: 'Residential-style studio with galley kitchen for longer creative retreats.',
+              dateBoxTitle: 'Choose your stay dates',
+              checkInLabel: 'Check-in',
+              checkOutLabel: 'Check-out',
+              roomCategoryLabel: 'Select room category',
+              roomCategoryPlaceholder: 'Select a room category',
+              lockDatesCta: 'Lock in Dates'
         },
         ka: {
           pageTitle: 'Livin Hotel | დაჯავშნეთ ნომერი',
@@ -779,8 +785,14 @@
             featureDeluxeGardenDesc: 'მშვიდი ტვინ ან ორმაგი განლაგება, რომელსაც კერძო ეზოს ხედები შემოსაზღვრავს.',
             featureTripleGardenTitle: 'სამადგილიანი ნომერი ბაღის ხედით',
             featureTripleGardenDesc: 'თბილი სამადგილიანი სივრცე მწვანე ბალახებთან და დილის იოგას ბაქანთან.',
-            featureStudioTitle: 'სტუდიო აპარტამენტი',
-            featureStudioDesc: 'საცხოვრებელი სტილის სტუდიო, პატარა სამზარეულოთი ხანგრძლივი კრეატიული დასვენებისთვის.'
+              featureStudioTitle: 'სტუდიო აპარტამენტი',
+              featureStudioDesc: 'საცხოვრებელი სტილის სტუდიო, პატარა სამზარეულოთი ხანგრძლივი კრეატიული დასვენებისთვის.',
+              dateBoxTitle: 'აირჩიეთ თქვენი ყოფნის თარიღები',
+              checkInLabel: 'ჩასვლა',
+              checkOutLabel: 'გამოსვლა',
+              roomCategoryLabel: 'აირჩიეთ ნომრის კატეგორია',
+              roomCategoryPlaceholder: 'აირჩიეთ ნომრის კატეგორია',
+              lockDatesCta: 'დააფიქსირეთ თარიღები'
         },
         ru: {
           pageTitle: 'Livin Hotel | Забронировать номер',
@@ -804,8 +816,14 @@
             featureDeluxeGardenDesc: 'Спокойная конфигурация twin или double с видом на приватный двор.',
             featureTripleGardenTitle: 'Трехместный номер с видом на сад',
             featureTripleGardenDesc: 'Уютное размещение для троих рядом с травяными садами и площадкой для утренней йоги.',
-            featureStudioTitle: 'Студия-апартаменты',
-            featureStudioDesc: 'Студия в жилом стиле с кухней-нишей для длинных творческих поездок.'
+              featureStudioTitle: 'Студия-апартаменты',
+              featureStudioDesc: 'Студия в жилом стиле с кухней-нишей для длинных творческих поездок.',
+              dateBoxTitle: 'Выберите даты пребывания',
+              checkInLabel: 'Заезд',
+              checkOutLabel: 'Выезд',
+              roomCategoryLabel: 'Выберите категорию номера',
+              roomCategoryPlaceholder: 'Выберите категорию номера',
+              lockDatesCta: 'Зафиксировать даты'
         },
         hy: {
           pageTitle: 'Livin Hotel | Ամրագրեք սենյակ',
@@ -829,8 +847,14 @@
             featureDeluxeGardenDesc: 'Խաղաղ twin կամ double լուծում՝ անձնական բակով շրջանակված.',
             featureTripleGardenTitle: 'Եռատեղանոց համար այգու տեսքով',
             featureTripleGardenDesc: 'Հարմարավետ եռտեղանոց դասավորություն՝ խոտաբույսերի այգիների և առավոտյան յոգայի տարածքի կողքին.',
-            featureStudioTitle: 'Ստուդիա-բնակարան',
-            featureStudioDesc: 'Կենցաղային ոճի ստուդիա՝ փոքր խոհանոցով՝ երկարատև ստեղծագործական մնալու համար.'
+              featureStudioTitle: 'Ստուդիա-բնակարան',
+              featureStudioDesc: 'Կենցաղային ոճի ստուդիա՝ փոքր խոհանոցով՝ երկարատև ստեղծագործական մնալու համար.',
+              dateBoxTitle: 'Ընտրեք ձեր մնալու ժամկետները',
+              checkInLabel: 'Մուտք',
+              checkOutLabel: 'Ելք',
+              roomCategoryLabel: 'Ընտրեք սենյակի կատեգորիան',
+              roomCategoryPlaceholder: 'Ընտրեք սենյակի կատեգորիան',
+              lockDatesCta: 'Ամրագրել ամսաթվերը'
         },
         de: {
           pageTitle: 'Livin Hotel | Zimmer buchen',
@@ -854,8 +878,14 @@
             featureDeluxeGardenDesc: 'Ruhige Twin- oder Doppellösung, eingerahmt von privaten Hofblicken.',
             featureTripleGardenTitle: 'Dreibettzimmer mit Gartenblick',
             featureTripleGardenDesc: 'Gemütliches Triple-Setup neben den Kräutergärten und der Morgenyoga-Wiese.',
-            featureStudioTitle: 'Studio-Apartment',
-            featureStudioDesc: 'Wohnliches Studio mit Pantryküche für längere kreative Retreats.'
+              featureStudioTitle: 'Studio-Apartment',
+              featureStudioDesc: 'Wohnliches Studio mit Pantryküche für längere kreative Retreats.',
+              dateBoxTitle: 'Wählen Sie Ihre Reisedaten',
+              checkInLabel: 'Anreise',
+              checkOutLabel: 'Abreise',
+              roomCategoryLabel: 'Zimmerkategorie wählen',
+              roomCategoryPlaceholder: 'Zimmerkategorie wählen',
+              lockDatesCta: 'Daten sichern'
         }
       };
 

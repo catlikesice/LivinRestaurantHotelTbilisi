@@ -129,26 +129,26 @@
             <label for="check-out" data-i18n="checkOutLabel">Check-out</label>
             <input id="check-out" type="date" name="check-out" required />
           </div>
-          <div class="date-input">
-            <label for="room-category" data-i18n="roomCategoryLabel">Select room category</label>
-            <select id="room-category" name="room-category" required>
-              <option value="" disabled selected data-i18n="roomCategoryPlaceholder">Select a room category</option>
-              <option value="king-balcony" data-i18n="featureKingBalconyTitle">King Room with Balcony</option>
-              <option value="deluxe-balcony" data-i18n="featureDeluxeBalconyTitle">Deluxe Double (or Twin Room) with Balcony</option>
-              <option value="king-garden" data-i18n="featureKingGardenTitle">King Room with Garden View</option>
-              <option value="triple-city" data-i18n="featureTripleCityTitle">Triple Room with City View</option>
-              <option value="family-balcony" data-i18n="featureFamilyBalconyTitle">Family Suite with Balcony</option>
-              <option value="deluxe-garden" data-i18n="featureDeluxeGardenTitle">Deluxe Double (or Twin Room) with Garden View</option>
-              <option value="triple-garden" data-i18n="featureTripleGardenTitle">Triple Room with Garden View</option>
-              <option value="studio-apartment" data-i18n="featureStudioTitle">Studio Apartment</option>
-            </select>
-          </div>
+            <div class="date-input">
+              <label for="room-category" data-i18n="roomCategoryLabel">Select room category</label>
+              <select id="room-category" name="room-category" required>
+                <option
+                  value=""
+                  disabled
+                  selected
+                  data-placeholder="true"
+                  data-i18n="roomCategoryPlaceholder"
+                >
+                  Select a room category
+                </option>
+              </select>
+            </div>
           <button type="button" id="lock-dates" data-i18n="lockDatesCta">Lock in Dates</button>
         </div>
       </section>
 
     <script type="module">
-      const translations = {
+        const translations = {
         en: {
           pageTitle: 'Livin Hotel | Book Your Stay',
           languageLabel: 'Select site language',
@@ -305,6 +305,39 @@
               lockDatesCta: 'Daten sichern'
         }
       };
+
+        const roomCategorySelect = document.getElementById('room-category');
+
+        const slugify = (text) =>
+          text
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+
+        const populateRoomCategoryOptions = () => {
+          if (!roomCategorySelect) return;
+
+          roomCategorySelect
+            .querySelectorAll('option:not([data-placeholder="true"])')
+            .forEach((option) => option.remove());
+
+          document.querySelectorAll('.room-card h3').forEach((heading) => {
+            const option = document.createElement('option');
+            const labelKey = heading.dataset.i18n;
+
+            option.value = heading.dataset.roomValue ?? slugify(heading.textContent);
+
+            if (labelKey) {
+              option.dataset.i18n = labelKey;
+            }
+
+            option.textContent = heading.textContent.trim();
+            roomCategorySelect.appendChild(option);
+          });
+        };
+
+        populateRoomCategoryOptions();
 
       const LOCALE_STORAGE_KEY = 'livin-hotel-locale';
       const localeSelect = document.getElementById('site-language');

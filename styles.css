@@ -498,18 +498,33 @@ body{
     transform: translateY(-4px);
     border-color: var(--accent);
   }
-  .booking-page .room-thumb{
-    border-radius: 12px;
-    height: 140px;
-    background: linear-gradient(135deg, rgba(255, 76, 41, 0.2), rgba(46, 204, 113, 0.18));
-    border: 1px dashed rgba(255, 255, 255, 0.18);
-    display: grid;
-    place-items: center;
-    font-size: 0.85rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-  }
+    .booking-page .room-thumb{
+      border-radius: 12px;
+      height: 140px;
+      background: linear-gradient(135deg, rgba(255, 76, 41, 0.2), rgba(46, 204, 113, 0.18));
+      border: 1px dashed rgba(255, 255, 255, 0.18);
+      display: grid;
+      place-items: center;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      overflow: hidden;
+      position: relative;
+    }
+    .booking-page .room-thumb.has-image{
+      border: none;
+      background: rgba(0, 0, 0, 0.5);
+      display: block;
+      padding: 0;
+    }
+    .booking-page .room-thumb.has-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: inherit;
+    }
   .booking-page .room-card h3{
     margin: 0;
     color: var(--white);

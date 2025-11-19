@@ -707,11 +707,24 @@
         <div class="date-input">
           <label for="check-in">Check-in</label>
           <input id="check-in" type="date" name="check-in" required />
-          <option value="" disabled selected>Select a room category</option>
         </div>
         <div class="date-input">
           <label for="check-out">Check-out</label>
           <input id="check-out" type="date" name="check-out" required />
+        </div>
+        <div class="date-input">
+          <label for="room-category">Select room category</label>
+          <select id="room-category" name="room-category" required>
+            <option value="" disabled selected>Select a room category</option>
+            <option value="king-balcony">King Room with Balcony</option>
+            <option value="deluxe-balcony">Deluxe Double (or Twin Room) with Balcony</option>
+            <option value="king-garden">King Room with Garden View</option>
+            <option value="triple-city">Triple Room with City View</option>
+            <option value="family-balcony">Family Suite with Balcony</option>
+            <option value="deluxe-garden">Deluxe Double (or Twin Room) with Garden View</option>
+            <option value="triple-garden">Triple Room with Garden View</option>
+            <option value="studio-apartment">Studio Apartment</option>
+          </select>
         </div>
         <button type="button" id="lock-dates">Lock in Dates</button>
       </div>

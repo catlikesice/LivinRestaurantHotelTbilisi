@@ -351,27 +351,585 @@ body{
   .hero-content{ max-width:58%; }
   .section-cards{ grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width:700px){
-  .navbar{ gap:12px; }
-  .site-logo{ width:64px; height:64px; border-width:5px; }
-  .nav-right{
-    width:100%;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:10px;
+  @media (max-width:700px){
+    .navbar{ gap:12px; }
+    .site-logo{ width:64px; height:64px; border-width:5px; }
+    .nav-right{
+      width:100%;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:10px;
+    }
+    .language-selector{
+      width:100%;
+      justify-content:flex-end;
+    }
+    .language-selector select{
+      width:100%;
+      max-width:220px;
+    }
+    .hero{ flex-direction:column-reverse; align-items:flex-start; padding:20px; }
+    .hero-content{ max-width:100%; }
+    .logo-circle{ width:110px; height:110px; margin-bottom:8px; }
+    .section-cards{ grid-template-columns: 1fr; }
+    .nav-actions{ width:100%; justify-content:flex-end; gap:8px; }
+    .nav-card{ min-width:120px; padding:8px 12px; font-size:0.95rem; }
   }
-  .language-selector{
-    width:100%;
-    justify-content:flex-end;
+
+  /* Booking page */
+  body.booking-page{
+    --bg: #020304;
+    --panel: rgba(6, 8, 12, 0.8);
+    --panel-2: rgba(255, 255, 255, 0.04);
+    --white: #ffffff;
+    --muted: #d6dadd;
+    --accent: #ff4c29;
+    --accent-dark: #c83115;
+    --green: #2ecc71;
+    --radius: 18px;
+    --shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+    --accent-red: #ff1b14;
+    --leaf-green: #1faf4e;
+    --muted-2: #a3abab;
+    --bg-deep: #050505;
+    --glass: rgba(255,255,255,0.02);
+    --card-radius: 14px;
+    --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.75);
+    --shadow-sm: 0 6px 24px rgba(0, 0, 0, 0.6);
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--muted);
+    background:
+      radial-gradient(circle at 15% 20%, rgba(46, 204, 113, 0.2), transparent),
+      radial-gradient(circle at 80% 15%, rgba(255, 76, 41, 0.2), transparent),
+      linear-gradient(135deg, #010101, #050608 58%, #090b12);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
-  .language-selector select{
-    width:100%;
-    max-width:220px;
+  .booking-page main{
+    flex: 1;
+    width: min(1200px, 92%);
+    margin: 0 auto 120px;
+    display: grid;
+    gap: 32px;
   }
-  .hero{ flex-direction:column-reverse; align-items:flex-start; padding:20px; }
-  .hero-content{ max-width:100%; }
-  .logo-circle{ width:110px; height:110px; margin-bottom:8px; }
-  .section-cards{ grid-template-columns: 1fr; }
-  .nav-actions{ width:100%; justify-content:flex-end; gap:8px; }
-  .nav-card{ min-width:120px; padding:8px 12px; font-size:0.95rem; }
-}
+  .booking-page .hero{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    padding: clamp(24px, 6vw, 48px);
+    border-radius: var(--radius);
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: var(--shadow);
+  }
+  .booking-page .hero h1{
+    margin: 0 0 12px 0;
+    color: var(--white);
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-family: "Playfair Display", serif;
+  }
+  .booking-page .hero p{
+    margin: 0 0 20px 0;
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .booking-page .hero-details{
+    display: grid;
+    gap: 12px;
+  }
+  .booking-page .hero-chip{
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .booking-page .booking-form{
+    background: rgba(3, 5, 8, 0.9);
+    border-radius: var(--radius);
+    padding: clamp(24px, 5vw, 40px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 28px;
+  }
+  .booking-page .room-showcase{
+    padding: clamp(24px, 5vw, 48px);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(8, 10, 16, 0.7);
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 22px;
+  }
+  .booking-page .room-showcase h2{
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    color: var(--white);
+  }
+  .booking-page .room-showcase p{
+    margin: 0;
+    color: rgba(255,255,255,0.78);
+    max-width: 640px;
+  }
+  .booking-page .room-grid{
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+  .booking-page .room-card{
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 18px;
+    display: grid;
+    gap: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .booking-page .room-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+  .booking-page .room-thumb{
+    border-radius: 12px;
+    height: 140px;
+    background: linear-gradient(135deg, rgba(255, 76, 41, 0.2), rgba(46, 204, 113, 0.18));
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    display: grid;
+    place-items: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .booking-page .room-card h3{
+    margin: 0;
+    color: var(--white);
+    font-size: 1.05rem;
+  }
+  .booking-page .room-card p{
+    margin: 0;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .booking-page fieldset{
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .booking-page legend{
+    font-family: "Playfair Display", serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .booking-page label{
+    display: grid;
+    gap: 6px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  .booking-page input,
+  .booking-page select,
+  .booking-page textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  .booking-page input:focus,
+  .booking-page select:focus,
+  .booking-page textarea:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 76, 41, 0.35);
+  }
+  .booking-page textarea{
+    min-height: 100px;
+    resize: vertical;
+  }
+  .booking-page .grid-two{
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .booking-page .submit-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .booking-page .submit-row button{
+    padding: 14px 24px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 16px 32px rgba(255, 76, 41, 0.25);
+    transition: transform 0.2s ease;
+  }
+  .booking-page .submit-row button:hover{
+    transform: translateY(-2px);
+  }
+  .booking-page .submit-row small{
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .booking-page .handoff{
+    margin: -8px 0 0 0;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.75);
+  }
+  .booking-page .handoff a{
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .booking-page .handoff a:hover{
+    text-decoration: underline;
+  }
+  .booking-page .date-box{
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+    background: rgba(2, 3, 4, 0.92);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px clamp(16px, 4vw, 60px) 36px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 -20px 35px rgba(0, 0, 0, 0.65);
+  }
+  .booking-page .date-box-inner{
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: end;
+  }
+  .booking-page .date-box h2{
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    color: var(--white);
+    font-size: 1.4rem;
+  }
+  .booking-page .date-input label{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+  .booking-page .date-input input{
+    margin-top: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .booking-page .date-box button{
+    padding: 14px 22px;
+    border: none;
+    border-radius: 14px;
+    background: var(--green);
+    color: var(--bg);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 22px rgba(46, 204, 113, 0.35);
+  }
+  .booking-page .date-box button:hover{
+    transform: translateY(-2px);
+  }
+  @media (max-width: 700px){
+    .booking-page .navbar{
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .booking-page .site-logo{
+      width: 64px;
+      height: 64px;
+      border-width: 5px;
+    }
+    .booking-page .nav-right{
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .booking-page .language-selector{
+      width: 100%;
+      justify-content: flex-end;
+    }
+    .booking-page .language-selector select{
+      width: 100%;
+      max-width: 220px;
+    }
+    .booking-page .nav-actions{
+      width: 100%;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .booking-page .nav-card{
+      min-width: 120px;
+      padding: 8px 12px;
+      font-size: 0.95rem;
+    }
+  }
+  @media (max-width: 640px){
+    .booking-page .site-header{
+      flex-direction: column;
+      gap: 18px;
+    }
+    .booking-page .hero{
+      padding: 22px;
+    }
+    .booking-page .booking-form{
+      padding: 24px;
+    }
+    .booking-page .date-box-inner{
+      grid-template-columns: 1fr;
+    }
+    .booking-page .date-box button{
+      width: 100%;
+    }
+  }
+
+  /* Payment page */
+  body.payment-page{
+    --bg: #010203;
+    --panel: rgba(4, 6, 10, 0.92);
+    --panel-soft: rgba(255, 255, 255, 0.04);
+    --white: #ffffff;
+    --muted: #cad0d4;
+    --accent: #ff4c29;
+    --accent-dark: #c83115;
+    --green: #2ecc71;
+    --radius: 22px;
+    --shadow: 0 28px 60px rgba(0, 0, 0, 0.45);
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--muted);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(46, 204, 113, 0.15), transparent),
+      radial-gradient(circle at 80% 0%, rgba(255, 76, 41, 0.15), transparent),
+      linear-gradient(140deg, #010101, #050608 58%, #0b0f18);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .payment-page .site-header{
+    padding: 24px clamp(16px, 4vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(1, 2, 3, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  .payment-page .brand{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .payment-page .brand-logo{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.18);
+    display: grid;
+    place-items: center;
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    box-shadow: inset 0 0 0 3px rgba(46, 204, 113, 0.45), var(--shadow);
+  }
+  .payment-page .brand-text span{
+    display: block;
+  }
+  .payment-page .brand-title{
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    color: var(--white);
+  }
+  .payment-page .brand-tagline{
+    font-size: 0.85rem;
+    color: var(--green);
+    letter-spacing: 0.04em;
+  }
+  .payment-page .header-cta a{
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .payment-page .header-cta a:hover{
+    transform: translateY(-3px);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .payment-page main{
+    flex: 1;
+    width: min(960px, 92%);
+    margin: 0 auto 120px;
+    display: grid;
+    gap: 24px;
+  }
+  .payment-page .checkout-card{
+    margin-top: 40px;
+    background: var(--panel);
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: clamp(24px, 5vw, 48px);
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 28px;
+  }
+  .payment-page .checkout-card h1{
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--white);
+  }
+  .payment-page .eyebrow{
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 12px 0;
+  }
+  .payment-page .checkout-form{
+    display: grid;
+    gap: 24px;
+  }
+  .payment-page fieldset{
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 24px;
+    margin: 0;
+    display: grid;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .payment-page legend{
+    font-family: "Playfair Display", serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    padding: 0 6px;
+  }
+  .payment-page label{
+    display: grid;
+    gap: 6px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+  .payment-page input,
+  .payment-page select,
+  .payment-page textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--white);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+  }
+  .payment-page input:focus,
+  .payment-page textarea:focus,
+  .payment-page select:focus{
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 76, 41, 0.35);
+  }
+  .payment-page textarea{
+    min-height: 100px;
+    resize: vertical;
+  }
+  .payment-page .grid-two{
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .payment-page .consent{
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 0.9rem;
+  }
+  .payment-page .consent input{
+    width: auto;
+    margin-top: 4px;
+  }
+  .payment-page .submit-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .payment-page .submit-row button{
+    padding: 16px 28px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(120deg, var(--accent), var(--accent-dark));
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 16px 32px rgba(255, 76, 41, 0.25);
+    transition: transform 0.2s ease;
+  }
+  .payment-page .submit-row button:hover{
+    transform: translateY(-2px);
+  }
+  .payment-page .back-link{
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  @media (max-width: 640px){
+    .payment-page .site-header{
+      flex-direction: column;
+      gap: 18px;
+    }
+    .payment-page fieldset{
+      padding: 18px;
+    }
+    .payment-page .submit-row{
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .payment-page .submit-row button{
+      width: 100%;
+    }
+  }

@@ -82,6 +82,15 @@ body{
   box-shadow:0 6px 18px rgba(0,0,0,0.45);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+select option{
+  color:#0c1118;
+  background:#ffffff;
+}
+select option:checked,
+select option:hover{
+  color:#ffffff;
+  background:#111722;
+}
 .language-selector::after{
   content:"";
   position:absolute;
